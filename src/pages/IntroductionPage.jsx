@@ -1,0 +1,103 @@
+import lizardImg from "../assets/images/lizard.jpg";
+
+export default function IntroductionPage() {
+  return (
+    <>
+      <h2>Introduction</h2>
+
+      <figure>
+        <img
+          src={lizardImg}
+          alt="Made a lizard friend."
+          width="210"
+          height="200"
+        />
+        <figcaption>Made a lizard friend.</figcaption>
+      </figure>
+
+      <h3>Personal Statement</h3>
+      <p>
+        I’m a sophomore at UNC Charlotte studying computer science with a
+        concentration in cyber security. I’m extremely passionate about anything
+        computer-related. I’m excited to continue delving deeper into the path
+        of computer science.
+      </p>
+
+      <h3>Background</h3>
+      <ul>
+        <li>
+          <strong>Personal Background: </strong>I spend most of my free time on
+          my computer; usually playing video games. I’ve built two computers as
+          of currently and have been working with them since I was nine years
+          old.
+        </li>
+        <li>
+          <strong>Professional Background: </strong>
+          I’ve worked in customer service since I was 16. Customer service has
+          given me the skills to be able to work well with other people and
+          strengthen my communication skills.
+        </li>
+        <li>
+          <strong>Academic Background: </strong>
+          I’m currently a sophomore at UNC Charlotte studying computer science
+          with a concentration in cyber security.
+        </li>
+        <li>
+          <strong>Background in Subject: </strong>
+          I’ve taken a class in high school covering surface level web
+          development. Most of the material was taught using Adobe Dreamweaver.
+        </li>
+        <li>
+          <strong>Primary Work Computer: </strong>I mainly use my Macbook Pro
+          laptop to do my work because of ease of access.
+        </li>
+        <li>
+          <strong>Backup Work Computer: </strong>I have my personal custom
+          desktop computer if I am unable to use my laptop.
+        </li>
+        <li>
+          <strong>Current Courses: </strong>
+          <ol>
+            <li>
+              <strong>ITIS 3135 - Front End Web Development: </strong>
+              Required course. I also find front end development very fun.
+            </li>
+            <li>
+              <strong>MATH 1241 - Calculus 1: </strong>
+              Required course.
+            </li>
+            <li>
+              <strong>CTCM 2530 - Critical Thinking and Communication: </strong>
+              Required course.
+            </li>
+            <li>
+              <strong>ITSC 2181 - Introduction to Computer Systems: </strong>
+              Required course.
+            </li>
+            <li>
+              <strong>
+                ANTH 2141 - Introduction to Biological Anthropology:{" "}
+              </strong>
+              Required course.
+            </li>
+            <li>
+              <strong>
+                ANTH 2141L - Introduction to Biological Anthropology Lab:{" "}
+              </strong>
+              Required course.
+            </li>
+          </ol>
+        </li>
+        <li>
+          <strong>Fun Fact: </strong>
+          I've seen the same music artist four times!
+        </li>
+      </ul>
+
+      <blockquote>
+        “A person who thinks all the time has nothing to think about except
+        thoughts.” <cite>- Alan Watts</cite>
+      </blockquote>
+    </>
+  );
+}
