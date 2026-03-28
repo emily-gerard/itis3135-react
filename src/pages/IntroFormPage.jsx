@@ -157,7 +157,7 @@ export default function IntroFormPage() {
   function handleReset() {
     setFormData(initialFormData);
     setCourses(initialCourses);
-    setImagePreview("/images/lizard.jpg");
+    setImagePreview("assets/images/lizard.jpg");
     setImageFileName("");
     setJsonOutput("");
     setSubmittedData(null);
