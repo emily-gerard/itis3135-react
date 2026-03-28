@@ -8,10 +8,10 @@ export default function Header() {
       <nav aria-label="Primary">
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="itis3135/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/itis3135">ITIS 3135 Page</NavLink>
+            <NavLink to="/">ITIS 3135 Page</NavLink>
           </li>
           <li>
             <NavLink to="/introduction">Introduction</NavLink>
