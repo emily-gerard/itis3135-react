@@ -70,12 +70,21 @@ const initialFormData = {
   fcc: "https://www.freecodecamp.org/emilygerard",
 };
 
+function escapeHtml(text) {
+  return String(text ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 export default function IntroFormPage() {
   const [formData, setFormData] = useState(initialFormData);
   const [courses, setCourses] = useState(initialCourses);
   const [imagePreview, setImagePreview] = useState("/images/lizard.jpg");
   const [imageFileName, setImageFileName] = useState("");
   const [jsonOutput, setJsonOutput] = useState("");
+  const [htmlOutput, setHtmlOutput] = useState("");
   const [submittedData, setSubmittedData] = useState(null);
 
   function handleChange(event) {
@@ -103,15 +112,7 @@ export default function IntroFormPage() {
   }
 
   function addCourse() {
-    setCourses((prev) => [
-      ...prev,
-      {
-        dep: "",
-        num: "",
-        name: "",
-        reason: "",
-      },
-    ]);
+    setCourses((prev) => [...prev, { dep: "", num: "", name: "", reason: "" }]);
   }
 
   function removeCourse(index) {
@@ -151,15 +152,17 @@ export default function IntroFormPage() {
     setImagePreview("");
     setImageFileName("");
     setJsonOutput("");
+    setHtmlOutput("");
     setSubmittedData(null);
   }
 
   function handleReset() {
     setFormData(initialFormData);
     setCourses(initialCourses);
-    setImagePreview("assets/images/lizard.jpg");
+    setImagePreview("/images/lizard.jpg");
     setImageFileName("");
     setJsonOutput("");
+    setHtmlOutput("");
     setSubmittedData(null);
   }
 
@@ -170,6 +173,135 @@ export default function IntroFormPage() {
       courses,
     };
     setJsonOutput(JSON.stringify(payload, null, 2));
+    setHtmlOutput("");
+  }
+
+  function generateHTML() {
+    const pictureFile = imageFileName || "lizard.jpg";
+
+    const courseItems = courses
+      .filter(
+        (course) =>
+          course.dep.trim() ||
+          course.num.trim() ||
+          course.name.trim() ||
+          course.reason.trim()
+      )
+      .map(
+        (course) => `
+            <li>
+              <strong>${escapeHtml(course.dep)} ${escapeHtml(
+          course.num
+        )} - ${escapeHtml(course.name)}: </strong>${escapeHtml(course.reason)}
+            </li>`
+      )
+      .join("");
+
+    const optionalShare = formData.share.trim()
+      ? `
+        <li>
+          <strong>Something to Share: </strong>${escapeHtml(formData.share)}
+        </li>`
+      : "";
+
+    const optionalFunFact = formData.fun_fact.trim()
+      ? `
+        <li>
+          <strong>Fun Fact: </strong>${escapeHtml(formData.fun_fact)}
+        </li>`
+      : "";
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${escapeHtml(formData.f_name)} ${escapeHtml(
+      formData.l_name
+    )} | ${escapeHtml(formData.mascot_adj)} ${escapeHtml(
+      formData.mascot_ani
+    )}</title>
+  </head>
+  <body>
+    <main>
+      <h2>${escapeHtml(formData.f_name)} ${escapeHtml(
+      formData.m_name
+    )} ${escapeHtml(formData.l_name)}</h2>
+
+      <h3>${escapeHtml(formData.mascot_adj)} ${escapeHtml(
+      formData.mascot_ani
+    )}</h3>
+
+      <figure>
+        <img
+          src="images/${escapeHtml(pictureFile)}"
+          alt="${escapeHtml(formData.caption)}"
+          width="210"
+          height="200"
+        />
+        <figcaption>${escapeHtml(formData.caption)}</figcaption>
+      </figure>
+
+      <h3>Personal Statement</h3>
+      <p>${escapeHtml(formData.p_statement)}</p>
+
+      <h3>Background</h3>
+      <ul>
+        <li>
+          <strong>Personal Background: </strong>${escapeHtml(
+            formData.per_background
+          )}
+        </li>
+        <li>
+          <strong>Professional Background: </strong>${escapeHtml(
+            formData.prof_background
+          )}
+        </li>
+        <li>
+          <strong>Academic Background: </strong>${escapeHtml(
+            formData.a_background
+          )}
+        </li>
+        <li>
+          <strong>Background in Subject: </strong>${escapeHtml(
+            formData.sub_background
+          )}
+        </li>
+        <li>
+          <strong>Primary Computer: </strong>${escapeHtml(formData.prim_comp)}
+        </li>
+        <li>
+          <strong>Backup Computer: </strong>${escapeHtml(formData.backup)}
+        </li>
+        <li>
+          <strong>Current Courses: </strong>
+          <ol>${courseItems}
+          </ol>
+        </li>${optionalFunFact}${optionalShare}
+      </ul>
+
+      <blockquote>
+        "${escapeHtml(formData.quote)}"
+        <cite>- ${escapeHtml(formData.author)}</cite>
+      </blockquote>
+
+      <p>
+        <a href="${escapeHtml(formData.github)}" target="_blank">GitHub</a>
+        ${escapeHtml(formData.divider)}
+        <a href="${escapeHtml(formData.git_io)}" target="_blank">GitHub.io</a>
+        ${escapeHtml(formData.divider)}
+        <a href="${escapeHtml(formData.clt_site)}" target="_blank">CLT Site</a>
+        ${escapeHtml(formData.divider)}
+        <a href="${escapeHtml(formData.linked)}" target="_blank">LinkedIn</a>
+        ${escapeHtml(formData.divider)}
+        <a href="${escapeHtml(formData.fcc)}" target="_blank">FreeCodeCamp</a>
+      </p>
+    </main>
+  </body>
+</html>`;
+
+    setHtmlOutput(html);
+    setJsonOutput("");
   }
 
   function handleSubmit(event) {
@@ -183,6 +315,7 @@ export default function IntroFormPage() {
 
     setSubmittedData(payload);
     setJsonOutput("");
+    setHtmlOutput("");
   }
 
   return (
@@ -625,7 +758,9 @@ export default function IntroFormPage() {
           <button type="button" id="generate-json-btn" onClick={generateJSON}>
             Generate JSON
           </button>
-          <button type="button">Generate HTML</button>
+          <button type="button" onClick={generateHTML}>
+            Generate HTML
+          </button>
           <button type="button" id="clear-btn" onClick={handleClear}>
             Clear
           </button>
@@ -637,6 +772,15 @@ export default function IntroFormPage() {
           <h3>JSON Output</h3>
           <pre>
             <code>{jsonOutput}</code>
+          </pre>
+        </>
+      )}
+
+      {htmlOutput && (
+        <>
+          <h3>HTML Output</h3>
+          <pre>
+            <code>{htmlOutput}</code>
           </pre>
         </>
       )}
