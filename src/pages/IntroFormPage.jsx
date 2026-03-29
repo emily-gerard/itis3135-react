@@ -1,4 +1,5 @@
 import { useState } from "react";
+import lizardImg from "../assets/images/lizard.jpg";
 
 const initialCourses = [
   {
@@ -81,7 +82,7 @@ function escapeHtml(text) {
 export default function IntroFormPage() {
   const [formData, setFormData] = useState(initialFormData);
   const [courses, setCourses] = useState(initialCourses);
-  const [imagePreview, setImagePreview] = useState("/assets/images/lizard.jpg");
+  const [imagePreview, setImagePreview] = useState(lizardImg);
   const [imageFileName, setImageFileName] = useState("");
   const [jsonOutput, setJsonOutput] = useState("");
   const [htmlOutput, setHtmlOutput] = useState("");
@@ -159,7 +160,7 @@ export default function IntroFormPage() {
   function handleReset() {
     setFormData(initialFormData);
     setCourses(initialCourses);
-    setImagePreview("/assets/images/lizard.jpg");
+    setImagePreview(lizardImg);
     setImageFileName("");
     setJsonOutput("");
     setHtmlOutput("");
