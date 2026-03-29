@@ -81,7 +81,7 @@ function escapeHtml(text) {
 export default function IntroFormPage() {
   const [formData, setFormData] = useState(initialFormData);
   const [courses, setCourses] = useState(initialCourses);
-  const [imagePreview, setImagePreview] = useState("/images/lizard.jpg");
+  const [imagePreview, setImagePreview] = useState("/assets/images/lizard.jpg");
   const [imageFileName, setImageFileName] = useState("");
   const [jsonOutput, setJsonOutput] = useState("");
   const [htmlOutput, setHtmlOutput] = useState("");
@@ -159,7 +159,7 @@ export default function IntroFormPage() {
   function handleReset() {
     setFormData(initialFormData);
     setCourses(initialCourses);
-    setImagePreview("/images/lizard.jpg");
+    setImagePreview("/assets/images/lizard.jpg");
     setImageFileName("");
     setJsonOutput("");
     setHtmlOutput("");
