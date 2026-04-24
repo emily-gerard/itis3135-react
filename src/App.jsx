@@ -10,7 +10,7 @@ import DocumentationPage from "./pages/DocumentationPage";
 import ProductPage from "./pages/ProductPage";
 import IntroFormPage from "./pages/IntroFormPage";
 import ContractPage from "./pages/ContractPage";
-import CatSlideshow from "./pages/CatSlideshow";
+import CatSlideshow from "./pages/CatSlideshow.jsx";
 
 function App() {
   return (
