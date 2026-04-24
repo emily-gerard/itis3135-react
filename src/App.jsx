@@ -29,9 +29,8 @@ function App() {
           <Route path="/projects/product" element={<ProductPage />} />
           <Route path="/intro-form" element={<IntroFormPage />} />
           <Route path="/contract" element={<ContractPage />} />
+          <Route path="/cat-slideshow" element={<CatSlideshow />} />
         </Route>
-
-        <Route path="/cat-slideshow" element={<CatSlideshow />} />
       </Routes>
     </BrowserRouter>
   );
