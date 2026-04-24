@@ -54,7 +54,7 @@ function CatSlideshow() {
 
   return (
     <main className="slideshow-page">
-      <h2>Cat API Slideshow</h2>
+      <h2>Cat Slideshow</h2>
 
       <div className="slideshow-container">
         <img
