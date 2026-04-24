@@ -37,6 +37,9 @@ export default function Header() {
           <li>
             <NavLink to="/contract">Contract</NavLink>
           </li>
+          <li>
+            <NavLink to="/cat-slideshow">Cat Slideshow</NavLink>
+          </li>
         </ul>
       </nav>
     </header>
