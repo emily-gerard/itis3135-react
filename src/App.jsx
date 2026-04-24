@@ -10,6 +10,7 @@ import DocumentationPage from "./pages/DocumentationPage";
 import ProductPage from "./pages/ProductPage";
 import IntroFormPage from "./pages/IntroFormPage";
 import ContractPage from "./pages/ContractPage";
+import CatSlideshow from "./pages/CatSlideshow";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
           <Route path="/intro-form" element={<IntroFormPage />} />
           <Route path="/contract" element={<ContractPage />} />
         </Route>
+
+        <Route path="/cat-slideshow" element={<CatSlideshow />} />
       </Routes>
     </BrowserRouter>
   );
